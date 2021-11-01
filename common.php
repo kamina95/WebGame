@@ -1,12 +1,11 @@
 <?php
 
 function outputHeader(){
-    
-    echo '<!DOCTYPE html>';
-    echo '<html>';
-    echo '<head>';
-    echo '<!-- Link to external style sheet -->';
-    echo '<link rel="stylesheet" type="text/css" href="styles.css">';
+    echo '<!DOCTYPE html>
+            <html>
+                <head>
+            <!-- Link to external style sheet -->
+                    <link rel="stylesheet" type="text/css" href="css/styles.css">';
  
 
 }
@@ -32,12 +31,11 @@ function outputBannerNavigation($pageName){
         echo ' href="' . $linkAddresses[$x] . '">' . $linkNames[$x] . '</a> ';
     }
     
-    echo '</div>';
-    echo '</div>';
-
-    echo '<h1>Boring   Clicker</h1>';
-    echo '</head>';
-    echo '<body>';
+    echo '</div>
+            </div>
+                <h1>Boring   Clicker</h1>
+            </head>
+        <body>';
 
 }
 
@@ -46,11 +44,11 @@ function tutorial($columnNumber, $position){
         echo '<div class = "columnas">';
     }
     echo '<div class = '.$columnNumber .'>';
-    echo '<fieldset>';
-    echo '<legend>Tutorial</legend>';
-    echo '<p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing so</p>';
-    echo '</fieldset>';
-    echo '</div>';
+    echo    '<fieldset>
+     <legend>Tutorial</legend>
+    <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing so</p>
+     </fieldset>
+     </div>';
     if($position == "end"){
         echo '</div>';
     }
@@ -58,20 +56,20 @@ function tutorial($columnNumber, $position){
 
 
 function outputFooter(){
-    echo '<div class = "footer">';
-    echo '<div id ="menuFooter">';
-    echo '<ul>';
-    echo '<li><a href = "index.php">Home</a></li>';
-    echo '<li><a href = "game.php">Game</a></li>';
-    echo '<li><a href = "ranking.php">Ranking</a></li>';
-    echo '<li><a href = "login.php">Login</a></li>';
-    echo '<li><a href = "register.php">Register</a></li>';
-    echo '<li><a href = "logout.php">Logout</a></li>';
-    echo '<li class ="contact"><a href = "mailto:antoniotornero@hotmail.es">Contact us</a></li>';
-    echo '<ul>';
+    echo '<div class = "footer">
+     <div id ="menuFooter">
+        <ul>
+            <li><a href = "index.php">Home</a></li>
+            <li><a href = "game.php">Game</a></li>
+            <li><a href = "ranking.php">Ranking</a></li>
+            <li><a href = "login.php">Login</a></li>
+            <li><a href = "register.php">Register</a></li>
+            <li><a href = "logout.php">Logout</a></li>
+            <li class ="contact"><a href = "mailto:antoniotornero@hotmail.es">Contact us</a></li>
+        <ul>
 
-    echo '</div>';
-    echo '</div>';
-    echo '</body>';
-    echo '</html>';
+        </div>
+        </div>
+        </body>
+     </html>';
 }
