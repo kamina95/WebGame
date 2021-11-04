@@ -1,6 +1,18 @@
+/*Style of the page*/
+
+
+/* Back ground Image for all pages */
+
 body {
     background-image: url("../img/n2.jpg");
 }
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Navigation Bar an Links of it*/
 
 a#nav {
     text-decoration: none;
@@ -27,23 +39,34 @@ a#nav:hover {
     background-color: tomato;
 }
 
-img {
-    max-width: 100px;
-    max-height: 100px;
-    padding-left: 30px;
-}
-
 .navigation {
     display: flex;
     justify-content: center;
 }
 
+
+/* Logo */
+
+img {
+    max-width: 130px;
+    max-height: 130px;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+
+/*Style of the TITLE*/
+
 h1 {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
     letter-spacing: 7px;
     font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
 }
+
+
+/*Layout for the columns for the home, login, registration and logout page*/
 
 .column1,
 .column2,
@@ -70,6 +93,9 @@ h1 {
     margin: auto;
 }
 
+
+/* Style of the columns*/
+
 fieldset {
     border-radius: 20px;
     padding: 20px;
@@ -89,6 +115,9 @@ legend {
     text-align: center;
     text-transform: uppercase;
 }
+
+
+/*Home page and  Logout Buttons*/
 
 a.button {
     border: 1px;
@@ -132,6 +161,40 @@ a.button2:hover {
     display: block;
 }
 
+
+/*GAME PAGE*/
+
+
+/*Layout for game and stats*/
+
+.gameLayaout,
+.gameStats {
+    float: left;
+    padding: 10px;
+}
+
+.gameLayaout {
+    width: 70%;
+    margin: 40px;
+    margin-top: 10px;
+}
+
+
+/*Provisional square where will go the game   */
+
+.provisional {
+    height: 500px;
+    font-size: large;
+    font-size: 200%;
+}
+
+.gameStats {
+    width: 20%;
+}
+
+
+/*Style for login and register page and forms*/
+
 .formField {
     border-bottom: 1px solid #efefef;
     margin: 10px;
@@ -143,8 +206,11 @@ a.button2:hover {
     float: left;
     width: 100px;
     text-align: right;
-    padding-left: 50px;
+    padding-left: 10px;
 }
+
+
+/*Button Style*/
 
 .submit {
     text-align: center;
@@ -155,6 +221,67 @@ a.button2:hover {
     cursor: pointer;
 }
 
+
+/*Ranking page*/
+
+.rankingPage table {
+    width: 700px;
+}
+
+.rankingPage fieldset {
+    height: 400px;
+}
+
+
+/*Ranking Table Style*/
+
+.globalTable th,
+.globalTable td {
+    padding: 7px 50px 10px 10px;
+}
+
+.globalTable th {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 90%;
+    border-bottom: 2px solid #111111;
+    border-top: 1px solid #999;
+    text-align: left;
+}
+
+.personalTable th,
+.personalTable td {
+    padding: 7px 50px 10px 10px;
+    letter-spacing: 0.1em;
+    font-size: 90%;
+    border-bottom: 2px solid #111111;
+    border-top: 1px solid #999;
+    text-align: left;
+}
+
+.personalTable th {
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: tomato;
+}
+
+.rankingPage {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.rankingTable {
+    float: left;
+    width: 70%;
+    padding: 10px;
+}
+
+
+/*Footer Style*/
+
 .footer {
     position: fixed;
     left: auto;
@@ -164,6 +291,9 @@ a.button2:hover {
     color: white;
     text-align: center;
 }
+
+
+/*Using list for the links*/
 
 ul {
     list-style-type: none;

@@ -8,14 +8,18 @@
 ?>
 
 <!-- Contents of the page -->
-    <?php
-        tutorial("column1", "start");
-    ?>
-    <div class = "column2">
+<!-- output of first column-->
+
+<?php
+    tutorial("column1", "start");
+?>
+
+    <!--          login form        -->
+<div class = "column2">
     <div class= "form">   
-            <fieldset>
-                <legend>Login</legend>
-                <form>
+        <fieldset>
+            <legend>Login</legend>
+            <form>
                 <div class = "formField">
                     <label for = "username" class = "title">Username:</label>
                     <input type = "text" name = "username" required ="requiered"/><br />
@@ -24,23 +28,23 @@
                     <label for = "password" class = "title">Password:</label>                   
                     <input type = "password" name = "password" required ="requiered"/><br /> 
                     </div>
-              
+            
                 <div class ="submit">                  
                     <input type = "submit" name = "suscribe" value = "Login"/>
                 </div>
-                </form>
-            </fieldset>
+            </form>
+        </fieldset>
+    </div>
 </div>
-        </div>
-    <?php
-        tutorial("column3" ,"end");
-    ?>
+
+        <!--output last column -->
+<?php
+    tutorial("column3" ,"end");
+?>
 
 
 
 <!-- Contents of the page -->
-
-
 <?php
     //Output the footer
     outputFooter();

@@ -8,9 +8,12 @@
 ?>
 
 <!-- Contents of the page -->
+<!-- Output first column-->
 <?php
     tutorial("column1" ,"start");
 ?>
+
+<!-- Button for logout-->
 <div class = "column2">
     <fieldset>
         <legend>see you soon</legend>
@@ -19,13 +22,13 @@
         </div>
     </fieldset>
 </div>
+
+<!-- Output Second Column-->
 <?php
     tutorial("column3", "end");
 ?>
 
-
-
-
+<!--output footer -->
 <?php
     //Output the footer
     outputFooter();

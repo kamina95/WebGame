@@ -11,11 +11,11 @@
 
 
 <!-- Contents of the page -->
-
+<!--output first column -->
 <?php
     tutorial("column1", "start");
 ?>
-
+<!-- buttons to login and register sides-->
 <div class = "column2">
     <fieldset>
         <legend>Welcome</legend>
@@ -26,12 +26,12 @@
         </div>
     </fieldset>
 </div>
-
+<!--output for last column -->
 <?php
     tutorial("column3", "end");
 ?>
 </div>
-
+<!--output of footer -->
 <?php
     //Output the footer
     outputFooter();
