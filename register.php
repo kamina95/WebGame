@@ -20,26 +20,31 @@
             <form>
                 <div class = "formField">
                     <label for = "username" class = "title">*Username:</label>
-                    <input type = "text" name = "username" required ="requiered"/><br />
+                    <input type = "text" name = "username" required ="requiered" id="UserNameInput"/><br />
                 </div>
                     
                 <div class = "formField">
-                    <label for = "password" class = "title">*Password:</label>
-                    <input type = "password" name = "pasword" required ="requiered"/><br />
-                </div>
-                <div class = "formField">    
-                    <label for = "comfirmPassword" class = "title">*Repit Pass:</label>                   
-                    <input type = "password" name = "comfirmPassword" required ="requiered"/><br /> 
+                    <label for = "email" class = "title">*Email:</label>
+                    <input type = "email" name = "email" required ="requiered" id="EmailInput"/><br />
                 </div>
 
                 <div class = "formField">
-                    <label for = "realName" class = "title">Real Name:</label> 
-                    <input type = "text" name = "realName"/><br />
+                    <label for = "password" class = "title">*Password:</label>
+                    <input type = "password" name = "pasword" required ="requiered" id="PasswordInput"/><br />
+                </div>
+                <div class = "formField">    
+                    <label for = "comfirmPassword" class = "title">*Repit Pass:</label>                   
+                    <input type = "password" name = "comfirmPassword" required ="requiered" id="ConfirmationPassword"/><br /> 
                 </div>
 
                 <div class = "formField">
                     <label for = "age" class = "title">Date of born:</label>
                     <input type = "date" name = "age"/><br />
+                </div>
+
+                <div class = "formField">
+                    <label for="telephone" class="title">Number:</label>
+                    <input type="text" number = "telephone" id = "TelephoneItem"><br />   
                 </div>
 
                 <div class = "formField">
@@ -52,11 +57,15 @@
                     Other<br />
                 </div>
 
-                <div class ="submit">
-                    <input type = "submit" name = "suscribe" value = "Register"/>
+                <div class = "submit">
+                    <button onclick="storeUser()">Register</button>
+                    <!--<input type = "submit" name = "suscribe" value = "Register"/>-->
                 </div>
+                
             </form>
+            <p id ="Result"></p>
         </fieldset>
+        
     </div>
 </div>
 
@@ -65,6 +74,24 @@
     tutorial("column3", "end");
 ?>
 
+<script>
+    function storeUser(){
+        //build objects that we are going to store 
+        var usrObject={};
+        usrObject.email = document.getElementById("EmailInput").value;
+        usrObject.password = document.getElementById("PasswordInput").value;
+        usrObject.userName = document.getElementById("UserNameInput").value;
+        usrObject.telephone = document.getElementById("TelephoneItem").value;
+
+        //store User
+        localStorage[usrObject.email] = JSON.stringify(usrObject);
+
+        //inform user of result
+        document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
+
+    }
+
+</script>
 
 <!--output for the footer-->
 <?php
