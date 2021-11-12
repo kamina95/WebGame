@@ -17,8 +17,10 @@
 <div class = "column2">
     <fieldset>
         <legend>see you soon</legend>
-        <div class = "buttonPos">      
-            <a class ="button button1" href = "">SIGN OUT</a>
+        <div id ="userLogin">
+            <div class = "buttonPos">      
+                <a class ="button button1" onclick="logout()">SIGN OUT</a>
+            </div>
         </div>
     </fieldset>
 </div>
@@ -27,6 +29,25 @@
 <?php
     tutorial("column3", "end");
 ?>
+
+<script>
+    window.onclick = checkLogin;
+    window.onload = checkLogin;//Check to see if user is logged in already
+    function checkLogin(){
+        if(sessionStorage.loggedInUsrEmail === undefined){                   
+            //Say hello to logged in user
+            document.getElementById("userLogin").innerHTML = "There is no User Login";
+        }
+    }
+
+
+    function logout(){
+
+        sessionStorage.clear();
+
+    }
+
+</script>
 
 <!--output footer -->
 <?php

@@ -125,6 +125,11 @@ legend {
     text-transform: uppercase;
 }
 
+#loginPara {
+    display: flex;
+    justify-content: center;
+}
+
 
 /*Home page and  Logout Buttons*/
 

@@ -30,7 +30,7 @@
 
                 <div class = "formField">
                     <label for = "password" class = "title">*Password:</label>
-                    <input type = "password" name = "pasword" required ="requiered" id="PasswordInput"/><br />
+                    <input type="password" name = "pasword" id="PasswordInput" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br />
                 </div>
                 <div class = "formField">    
                     <label for = "comfirmPassword" class = "title">*Repit Pass:</label>                   
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class = "submit">
-                    <button onclick="storeUser()">Register</button>
+                    <input type = "submit" value = "Register" onclick="storeUser(), CheckPassword()">
                     <!--<input type = "submit" name = "suscribe" value = "Register"/>-->
                 </div>
                 
@@ -90,6 +90,21 @@
         document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
 
     }
+
+    /*function CheckPassword() 
+    { 
+        var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if(document.getElementById("PasswordInput").value.match(passw)) 
+        { 
+            alert('Correct, try another...')
+            return true;
+        }
+        else
+        { 
+            alert('Wrong...!')
+            return false;
+        }
+    }*/
 
 </script>
 

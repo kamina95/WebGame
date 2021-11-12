@@ -22,10 +22,12 @@
                 <legend>Login</legend>
                 <div id="loginPara">
                     <form>
+
                         <div class = "formField">
                             <label for = "email" class = "title">Email:</label>
                             <input type = "text" name = "email" id="emailInput" required ="requiered"/><br />
-                        </div>        
+                        </div>     
+
                         <div class = "formField">    
                             <label for = "password" class = "title">Password:</label>                   
                             <input type = "password" name = "password" id="passwordInput" required ="requiered"/><br /> 
@@ -34,6 +36,7 @@
                         <div class ="submit">                  
                             <button onclick="login()">Login</button>
                         </div>
+
                     </form>
                 </div>
                 <p id="loginFailure" style="color:red;"></p>
@@ -55,7 +58,7 @@
             let usrObj = JSON.parse(localStorage[sessionStorage.loggedInUsrEmail])
 
             //say hello to logged in user
-            document.getElementById("loginPara").innerHTML = usrObj.email + " logged in.";
+            document.getElementById("loginPara").innerHTML = usrObj.userName + " logged in.";
         }
     }
 
