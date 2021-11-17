@@ -30,17 +30,17 @@
 
                 <div class = "formField">
                     <label for = "password" class = "title">*Password:</label>
-                    <input type="password" name = "pasword" id="PasswordInput" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br />
+                    <input type="password" name = "pasword" id="PasswordInput"   title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required><br />
                 </div>
                 <div class = "formField">    
                     <label for = "comfirmPassword" class = "title">*Repit Pass:</label>                   
-                    <input type = "password" name = "comfirmPassword" required ="requiered" id="ConfirmationPassword"/><br /> 
+                    <input type = "password" name = "comfirmPassword" required ="requiered" id="comfirmPassword"/><br /> 
                 </div>
 
-                <div class = "formField">
+                <!--<div class = "formField">
                     <label for = "age" class = "title">Date of born:</label>
                     <input type = "date" name = "age"/><br />
-                </div>
+                </div> -->
 
                 <div class = "formField">
                     <label for="telephone" class="title">Number:</label>
@@ -58,8 +58,8 @@
                 </div>
 
                 <div class = "submit">
-                    <input type = "submit" value = "Register" onclick="storeUser(), CheckPassword()">
-                    <!--<input type = "submit" name = "suscribe" value = "Register"/>-->
+                    
+                    <button type='button' onclick="storeUser()">Register</button>
                 </div>
                 
             </form>
@@ -75,36 +75,110 @@
 ?>
 
 <script>
+    
+
     function storeUser(){
         //build objects that we are going to store 
-        var usrObject={};
-        usrObject.email = document.getElementById("EmailInput").value;
-        usrObject.password = document.getElementById("PasswordInput").value;
-        usrObject.userName = document.getElementById("UserNameInput").value;
-        usrObject.telephone = document.getElementById("TelephoneItem").value;
+        if(CheckPassword() && CheckSimilitud() && CheckNumber() && CheckEmail() && CheckEmailExisting()){
+            var usrObject={};
+            usrObject.email = document.getElementById("EmailInput").value;
+            usrObject.password = document.getElementById("PasswordInput").value;
+            usrObject.password = document.getElementById("comfirmPassword").value;
+            usrObject.userName = document.getElementById("UserNameInput").value;
+            usrObject.telephone = document.getElementById("TelephoneItem").value;
 
-        //store User
-        localStorage[usrObject.email] = JSON.stringify(usrObject);
+            //store User
+            localStorage[usrObject.email] = JSON.stringify(usrObject);
 
-        //inform user of result
-        document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
+            //inform user of result
+            document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
+
+        }else if(!CheckEmailExisting()){
+
+            document.getElementById("Result").innerHTML = "<b>Email already in use</b>";
+            
+        }else if(!CheckEmail()){
+
+            document.getElementById("Result").innerHTML = "<b>Incorrect Format of Email</b>";
+
+        }else if(!CheckPassword()){
+
+            document.getElementById("Result").innerHTML = "<b>Password Incorrect</b>";
+
+        }else if(!CheckSimilitud()){
+
+            document.getElementById("Result").innerHTML = "<b>Password Doesn't match</b>";
+
+        }else if(!CheckNumber()){
+
+            document.getElementById("Result").innerHTML = "<b>Number Incorrect</b>";
+
+        }
+
+       
+
+    }
+    var test = "Hiii";
+
+    document.getElementById("rules").innerHTML = "hola que tal  </br >" + test;
+
+
+    function CheckEmailExisting()
+    {
+        var email = document.getElementById("EmailInput").value;
+        if(localStorage[email] === undefined){
+            return true;
+        }
+        return false;
 
     }
 
-    /*function CheckPassword() 
+    function CheckEmail() 
     { 
-        var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-        if(document.getElementById("PasswordInput").value.match(passw)) 
+        var emailRegex = new RegExp(/^[A-Za-z0-9_.-]+@[A-Za-z0-9.-]+$/);
+        var email = document.getElementById("EmailInput").value;
+        if(!emailRegex.test(email)) 
         { 
-            alert('Correct, try another...')
-            return true;
-        }
-        else
-        { 
-            alert('Wrong...!')
             return false;
         }
-    }*/
+        return true;
+    }
+
+    function CheckPassword() 
+    { 
+        var passwordRegex = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
+        var password = document.getElementById("PasswordInput").value;
+        if(!passwordRegex.test(password)) 
+        { 
+            return false;
+        }
+        return true;
+    }
+
+    function CheckSimilitud() 
+    {
+        var password = document.getElementById("PasswordInput").value;
+        var passwordRep = document.getElementById("comfirmPassword").value;
+
+        if(password == passwordRep){
+            return true;
+        }
+        return false;
+
+    }
+
+    function CheckNumber()
+    {
+        var number = document.getElementById("TelephoneItem").value;
+        var numberRegex = new RegExp(/^(\+?)(\d{10,13})$/);
+
+        if(!numberRegex.test(number)) 
+        { 
+            return false;
+        }
+        return true;
+
+    }
 
 </script>
 
