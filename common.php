@@ -19,7 +19,7 @@ function outputBannerNavigation($pageName){
     $linkNames = array("Home", "Game", "Ranking", "Login","Register", "Logout");
     $linkAddresses = array("index.php", "game.php", "ranking.php", "login.php","register.php", "logout.php");
     //adding the Logo
-    echo '<a id = "navImg" href = "index.php" > <img src ="img/Icon.png"/></a>';
+    echo '<a class = "navImg" href = "index.php" > <img src ="img/Icon.png"/></a>';
     //Output navigation
     echo '<div class = "navBar">';
     //for loop for the navigation

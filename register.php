@@ -75,9 +75,21 @@
 ?>
 
 <script>
+
+
     
 
     function storeUser(){
+
+        var msgEmailExisting = "";
+        var msgEmail = "";
+        var msgPassword ="";
+        var msgPasswordSimi ="";
+        var msgNumber ="";
+        
+        
+
+
         //build objects that we are going to store 
         if(CheckPassword() && CheckSimilitud() && CheckNumber() && CheckEmail() && CheckEmailExisting()){
             var usrObject={};
@@ -86,6 +98,11 @@
             usrObject.password = document.getElementById("comfirmPassword").value;
             usrObject.userName = document.getElementById("UserNameInput").value;
             usrObject.telephone = document.getElementById("TelephoneItem").value;
+            usrObject.cookies = 0;
+            usrObject.cursors = 0;
+            usrObject.grandmas = 0;
+            usrObject.fabrics = 0;
+            
 
             //store User
             localStorage[usrObject.email] = JSON.stringify(usrObject);
@@ -93,34 +110,39 @@
             //inform user of result
             document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
 
-        }else if(!CheckEmailExisting()){
+        }if(!CheckEmailExisting()){
+            msgEmailExisting = "This Email already exist."
 
             document.getElementById("Result").innerHTML = "<b>Email already in use</b>";
             
-        }else if(!CheckEmail()){
+        }if(!CheckEmail()){
+
+            msgEmail = "Not the correct Format of Email."
 
             document.getElementById("Result").innerHTML = "<b>Incorrect Format of Email</b>";
 
-        }else if(!CheckPassword()){
+        }if(!CheckPassword()){
 
+            msgPassword="The password has to have minimun one uppercase, lowercase,a number and a size of 6."
             document.getElementById("Result").innerHTML = "<b>Password Incorrect</b>";
 
-        }else if(!CheckSimilitud()){
+        }if(!CheckSimilitud()){
 
+            msgPasswordSimi = "The passwords doesn't match."
             document.getElementById("Result").innerHTML = "<b>Password Doesn't match</b>";
 
-        }else if(!CheckNumber()){
+        }if(!CheckNumber()){
 
+            msgNumber = "Not a correct format for the Number."
             document.getElementById("Result").innerHTML = "<b>Number Incorrect</b>";
 
         }
 
-       
+        document.getElementById("rules").innerHTML = "-Rules for the registration: </br></br >" + msgEmailExisting + "</br></br>" + msgEmail + "</br></br>" + msgPassword + "</br></br>" + msgPasswordSimi + "</br></br>" + msgNumber + "</br></br>" ;
 
     }
-    var test = "Hiii";
 
-    document.getElementById("rules").innerHTML = "hola que tal  </br >" + test;
+    //document.getElementById("rules").innerHTML = "-Rules for the registration:  </br></br>" + msgEmailExisting + "</br></br>" + msgEmail + "</br></br>" + msgPassword + "</br></br>" + msgPasswordSimi + "</br></br>" + msgNumber + "</br></br>" ;
 
 
     function CheckEmailExisting()
