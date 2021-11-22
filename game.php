@@ -23,7 +23,9 @@
                 <div class = "cookieContainer unselectable">
                     <img id ="cookieImg" src="img/cookieImg.png" alt="" onclick="addToScore(clickingPower)">
                 </div>
+                <br>
                 <button onclick = "saveGame()">Save Game</button>
+                <button onclick = "restartGame(), restorePoints()">Restart</button>
                 </center>
             </div>
             <div id ="gameRight">
@@ -69,7 +71,7 @@
             <table>
                 <tr>
                     <th>User Name</th>                    
-                    <td>Kamina</td>
+                    <td id = "usrName">Kamina</td>
                 </tr>
                 <tr>
                     <th>Max punctuation</th>
@@ -77,7 +79,7 @@
                 </tr>
                 <tr>
                     <th>Time Played</th>
-                    <td>00:12:45</td>
+                    <td id = "counter">00:12:45</td>
                     
                 </tr>
                 <tr>

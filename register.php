@@ -102,8 +102,8 @@
             usrObject.cursors = 0;
             usrObject.grandmas = 0;
             usrObject.fabrics = 0;
+            usrObject.time = 0;
             
-
             //store User
             localStorage[usrObject.email] = JSON.stringify(usrObject);
 
