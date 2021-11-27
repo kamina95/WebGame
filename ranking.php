@@ -18,14 +18,14 @@
 
         <fieldset>
             <legend>Global Ranking</legend>
-            <table>
-                <tr>
+            <table id ="tableRan">
+                <!-- <tr>
                     <th>Position</th>
                     <th>User Name</th>                    
                     <th>Puntuation</th>
                 </tr>
-                <tr>
-                    <td>1</td>
+                <tr >
+                    <td id ="1st">1</td>
                     <td>Peter</td>
                     <td>90444</td>
                     
@@ -49,7 +49,7 @@
                     <td>5</td>
                     <td>Brian</td>
                     <td>34555</td>                    
-                </tr>
+                </tr> -->
             </table>
         </fieldset>
     </div>
@@ -58,7 +58,8 @@
     <div class ="personalTable">
     <fieldset>
             <legend>Personal Ranking</legend>
-            <table>
+            <table >
+                
                 <tr>
                     <th>User Name</th>                    
                     <td>Kamina</td>
@@ -91,6 +92,8 @@
     </div>
 
 </div>
+
+<script src = "js/ranking.js"></script>
 
 <!--Output for the footer -->
 <?php

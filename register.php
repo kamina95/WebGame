@@ -103,6 +103,7 @@
             usrObject.grandmas = 0;
             usrObject.fabrics = 0;
             usrObject.time = 0;
+            usrObject.maxScore =0;
             
             //store User
             localStorage[usrObject.email] = JSON.stringify(usrObject);

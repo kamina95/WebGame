@@ -14,9 +14,18 @@ var grandmas = 0;
 var fabricCost = 300;
 var fabrics = 0;
 
+var timeOnSite = 0;
+
+var maxScore = 0;
+
+
+
 document.getElementById("score").innerHTML = score;
 
-window.onload = restoreGame(), restorePoints(), addingStats();
+window.onpaint
+window.onload = restoreGame();
+restorePoints();
+addingStats();
 
 function addToScore(amount) {
     score = score + amount;
@@ -34,6 +43,10 @@ function saveGame() {
     usrObj.cursors = cursors;
     usrObj.grandmas = grandmas;
     usrObj.fabrics = fabrics;
+
+    if (score > maxScore) {
+        usrObj.maxScore = score;
+    }
     localStorage.setItem(email, JSON.stringify(usrObj));
     //localStorage[email] = JSON.stringify(usrObject);
 
@@ -48,6 +61,8 @@ function restartGame() {
     usrObj.fabrics = 0;
     localStorage.setItem(email, JSON.stringify(usrObj));
     updateScosePerSecond();
+    location.reload();
+
 
 }
 
@@ -61,13 +76,15 @@ function restoreGame() {
     time = timeOnSite;
 
     cursors = usrObj.cursors;
-    cursorCost = cursors * Math.pow(1.2, cursors);
+    cursorCost = 10 + Math.round(cursors * Math.pow(1.2, cursors));
 
     grandmas = usrObj.grandmas;
-    grandmaCost = grandmas * Math.pow(1.2, grandmas);
+    grandmaCost = 50 + Math.round(grandmas * Math.pow(1.2, grandmas));
 
     fabrics = usrObj.fabrics;
-    fabricCost = fabrics * Math.pow(1.2, fabrics);
+    fabricCost = 300 + Math.round(fabrics * Math.pow(1.2, fabrics));
+
+    maxScore = usrObj.maxScore;
 
 }
 
@@ -96,7 +113,8 @@ function addingStats() {
     var email = sessionStorage.getItem("loggedInUsrEmail");
     let usrObj = JSON.parse(localStorage[email]);
     document.getElementById("usrName").innerHTML = usrObj.userName;
-
+    document.getElementById("maxScore").innerHTML = usrObj.maxScore;
+    document.getElementById("maxPerSecond").innerHTML = scorePerSecond
 
 }
 
@@ -140,8 +158,8 @@ function buyFabric() {
 }
 
 setInterval(function() {
-    score = score + cursors;
-    score = score + grandmas * 5 + fabrics * 20;
+    //score = score + cursors;
+    score = score + scorePerSecond;
     document.getElementById("score").innerHTML = score;
 
 

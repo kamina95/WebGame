@@ -16,7 +16,7 @@
             <div id = "gameLeft">
                 <center>
                 <div class = "scoreContainer unselectable">
-                    <span id ="score">0 </span>  salsa<br>
+                    <span id ="score">0 </span>  Cookies<br>
                     <span id ="scorePerSecond">0  </span>  Cookies Per Second<br>
                     <br>
                 </div>  
@@ -25,7 +25,7 @@
                 </div>
                 <br>
                 <button onclick = "saveGame()">Save Game</button>
-                <button onclick = "restartGame(), restorePoints()">Restart</button>
+                <button onclick = "restartGame(); restorePoints();">Restart</button>
                 </center>
             </div>
             <div id ="gameRight">
@@ -71,28 +71,28 @@
             <table>
                 <tr>
                     <th>User Name</th>                    
-                    <td id = "usrName">Kamina</td>
+                    <td id = "usrName">Undefined</td>
                 </tr>
                 <tr>
                     <th>Max punctuation</th>
-                    <td>10023</td>                    
+                    <td id = "maxScore"></td>                    
                 </tr>
                 <tr>
                     <th>Time Played</th>
-                    <td id = "counter">00:12:45</td>
+                    <td id = "counter">00:00:00</td>
                     
                 </tr>
                 <tr>
                     <th>Max Cookies per second</th>
-                    <td>12Kps</td>                   
+                    <td  id ="maxPerSecond">0</td>                   
                 </tr>
                 <tr>
                     <th>Number of abilites used</th>
-                    <td>57</td>                    
+                    <td>0</td>                    
                 </tr>
                 <tr>
                     <th>Ability more used</th>
-                    <td>Gold Strong</td>                    
+                    <td>--</td>                    
                 </tr>
                 
             </table>
