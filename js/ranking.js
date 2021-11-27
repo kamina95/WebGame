@@ -1,47 +1,42 @@
-const items = {...localStorage };
-console.log(items);
-// var email = items.getItem();
-// console.log(email);
-
-// for (var a in localStorage) {
-//     console.log(localStorage[a]);
-//     //a.getItem
-//     //console.log(a.key());
-// }
-const arrKey = [];
-for (var i = 0; i < localStorage.length; i++) {
-
-
-    console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
-    var usrObj = JSON.parse(localStorage.getItem(localStorage.key(i)))
-    arrKey[i] = usrObj;
-    console.log(usrObj.maxScore);
-}
-
-for (var i = 0; i < arrKey.length; i++) {
-    console.log(arrKey[i].userName);
-}
-
-for (var i = arrKey.length - 2; i >= 0; i--) {
-    for (var j = 0; j < i; j++) {
-        if (arrKey[j].maxScore < arrKey[j + 1].maxScore) {
-            var provisional = arrKey[j];
-            arrKey[j] = arrKey[j + 1];
-            arrKey[j + 1] = provisional;
-        }
-    }
-}
-
-
-
-
 //---------------------------------------------------------------
 
 window.onload = createTable();
 addingStats();
 
 
+
 function createTable() {
+    //var items = {...localStorage };
+
+    var arrKey = [];
+
+
+    for (var i = 0; i < localStorage.length; i++) {
+        //console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
+        var usrObj = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        arrKey[i] = usrObj;
+        //console.log(usrObj.maxScore);
+    }
+
+    for (var i = 0; i < arrKey.length; i++) {
+        console.log(arrKey[i]);
+    }
+
+    for (var i = arrKey.length - 2; i >= 0; i--) {
+        for (var j = 0; j < i + 1; j++) {
+            if (arrKey[j].maxScore < arrKey[j + 1].maxScore) {
+                var provisional = arrKey[j];
+                arrKey[j] = arrKey[j + 1];
+                arrKey[j + 1] = provisional;
+            }
+        }
+    }
+
+    for (var i = 0; i < arrKey.length; i++) {
+        console.log(arrKey[i]);
+    }
+
+
     table = document.getElementById("tableRan");
 
     // Create an empty <tr> element and add it to the 1st position of the table:
@@ -71,11 +66,13 @@ function createTable() {
 
 
 
+
 function addingStats() {
     var email = sessionStorage.getItem("loggedInUsrEmail");
-    let usrObj = JSON.parse(localStorage[email]);
-    document.getElementById("usrName").innerHTML = usrObj.userName;
-    document.getElementById("maxScore").innerHTML = usrObj.maxScore;
-    document.getElementById("maxPerSecond").innerHTML = scorePerSecond
+    var usrload = JSON.parse(localStorage[email]);
+    var scorePerSecond = usrload.cursors + usrload.grandmas * 5 + usrload.fabrics * 20;
+    document.getElementById("usrName").innerHTML = usrload.userName;
+    document.getElementById("maxScore").innerHTML = usrload.maxScore;
+    document.getElementById("maxPerSecond").innerHTML = scorePerSecond;
 
 }

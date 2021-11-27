@@ -62,28 +62,28 @@
                 
                 <tr>
                     <th>User Name</th>                    
-                    <td>Kamina</td>
+                    <td id ="usrName">Unlogged</td>
                 </tr>
                 <tr>
                     <th>Max punctuation</th>
-                    <td>10023</td>                    
+                    <td  id ="maxScore">0</td>                    
                 </tr>
                 <tr>
                     <th>Time Played</th>
-                    <td>00:12:45</td>
+                    <td>00:00:00</td>
                     
                 </tr>
                 <tr>
                     <th>Max Cookies per second</th>
-                    <td>12Kps</td>                   
+                    <td id ="maxPerSecond">0Cps</td>                   
                 </tr>
                 <tr>
                     <th>Number of abilites used</th>
-                    <td>57</td>                    
+                    <td>0</td>                    
                 </tr>
                 <tr>
                     <th>Ability more used</th>
-                    <td>Gold Strong</td>                    
+                    <td>---</td>                    
                 </tr>
                 
             </table>
