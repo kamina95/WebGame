@@ -166,9 +166,12 @@ setInterval(function() {
 }, 1000);
 
 setInterval(function() {
-    saveGame();
     addingStats();
-}, 15000);
+}, 1000);
+setInterval(function() {
+    saveGame();
+}, 5000);
+
 
 
 var pageVisisted = new Date();

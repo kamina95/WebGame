@@ -111,7 +111,8 @@
             //inform user of result
             document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
 
-        }if(!CheckEmailExisting()){
+        }else{
+        if(!CheckEmailExisting()){
             msgEmailExisting = "This Email already exist."
 
             document.getElementById("Result").innerHTML = "<b>Email already in use</b>";
@@ -140,6 +141,7 @@
         }
 
         document.getElementById("rules").innerHTML = "-Rules for the registration: </br></br >" + msgEmailExisting + "</br></br>" + msgEmail + "</br></br>" + msgPassword + "</br></br>" + msgPasswordSimi + "</br></br>" + msgNumber + "</br></br>" ;
+    }
 
     }
 

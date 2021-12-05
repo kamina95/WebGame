@@ -36,7 +36,7 @@
     function checkLogin(){
         if(sessionStorage.loggedInUsrEmail === undefined){                   
             //Say hello to logged in user
-            document.getElementById("userLogin").innerHTML = "There is no User Login";
+            document.getElementById("userLogin").innerHTML = "<p>There is no User Login</p>";
         }
     }
 
