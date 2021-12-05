@@ -254,6 +254,11 @@ a.button2:hover {
     margin: 0;
 }
 
+
+/* #upgradeImg img {
+    visibility: hidden;
+} */
+
 .shopButton #nameAndCost p {
     margin: 0px;
     width: 60%;

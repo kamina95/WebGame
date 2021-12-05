@@ -14,6 +14,9 @@ var grandmas = 0;
 var fabricCost = 300;
 var fabrics = 0;
 
+var cityCost = 500;
+var cities = 0;
+
 var timeOnSite = 0;
 
 var maxScore = 0;
@@ -33,7 +36,7 @@ function addToScore(amount) {
 }
 
 function updateScosePerSecond() {
-    scorePerSecond = cursors + (grandmas * 5) + (fabrics * 20);
+    scorePerSecond = cursors + (grandmas * 5) + (fabrics * 25) + (cities * 50);
     document.getElementById("scorePerSecond").innerHTML = scorePerSecond;
 }
 
@@ -43,6 +46,8 @@ function saveGame() {
     usrObj.cursors = cursors;
     usrObj.grandmas = grandmas;
     usrObj.fabrics = fabrics;
+    usrObj.cities = cities;
+    usrObj.clickingPower = clickingPower;
 
     if (score > maxScore) {
         usrObj.maxScore = score;
@@ -59,6 +64,8 @@ function restartGame() {
     usrObj.cursors = 0;
     usrObj.grandmas = 0;
     usrObj.fabrics = 0;
+    usrObj.cities = 0;
+    usrObj.clickingPower = 1;
     localStorage.setItem(email, JSON.stringify(usrObj));
     updateScosePerSecond();
     location.reload();
@@ -84,6 +91,11 @@ function restoreGame() {
     fabrics = usrObj.fabrics;
     fabricCost = 300 + Math.round(fabrics * Math.pow(1.2, fabrics));
 
+    cities = usrObj.cities;
+    cityCost = 500 + Math.round(cities * Math.pow(1.2, cities));
+
+    clickingPower = usrObj.clickingPower;
+
     maxScore = usrObj.maxScore;
 
 }
@@ -105,6 +117,11 @@ function restorePoints() {
     document.getElementById("fabricCost").innerHTML = fabricCost;
     document.getElementById("fabrics").innerHTML = fabrics;
 
+    document.getElementById("cityCost").innerHTML = cityCost;
+    document.getElementById("cities").innerHTML = cities;
+
+    document.getElementById("powerClick").innerHTML = clickingPower;
+
     updateScosePerSecond();
 
 }
@@ -115,6 +132,7 @@ function addingStats() {
     document.getElementById("usrName").innerHTML = usrObj.userName;
     document.getElementById("maxScore").innerHTML = usrObj.maxScore;
     document.getElementById("maxPerSecond").innerHTML = scorePerSecond
+    document.getElementById("powerClick").innerHTML = clickingPower;
 
 }
 
@@ -157,12 +175,37 @@ function buyFabric() {
     updateScosePerSecond();
 }
 
+function buyCity() {
+    if (score >= cityCost) {
+        score = score - cityCost;
+        cities = cities + 1;
+        cityCost = Math.round(cityCost * 1.15);
+    }
+    document.getElementById("cityCost").innerHTML = cityCost;
+    document.getElementById("cities").innerHTML = cities;
+    document.getElementById("score").innerHTML = score;
+    updateScosePerSecond();
+}
+
+
+function upgradePower(price) {
+    if (score >= price) {
+        score = score - price;
+        clickingPower = clickingPower * 2;
+        document.getElementById("upgradeImg").style.visibility = "hidden";
+    }
+    document.getElementById("powerClick").innerHTML = clickingPower;
+    document.getElementById("score").innerHTML = score;
+
+}
+
+
+
+
 setInterval(function() {
     //score = score + cursors;
     score = score + scorePerSecond;
     document.getElementById("score").innerHTML = score;
-
-
 }, 1000);
 
 setInterval(function() {
@@ -170,7 +213,7 @@ setInterval(function() {
 }, 1000);
 setInterval(function() {
     saveGame();
-}, 5000);
+}, 1000);
 
 
 
@@ -186,3 +229,91 @@ setInterval(function() {
 
     document.getElementById('counter').innerHTML = hours + ":" + minutes + ":" + seconds;
 }, 1000);
+
+class autoclick {
+
+    constructor(price) {
+        this.price = price;
+        this.speed = 10;
+        this.time = 3000;
+        this.interval = 100;
+        this.priceSpeed = 1000;
+        this.priceInterval = 1000;
+
+    }
+    setPrice() {
+        this.price = Math.round(this.price * 1.5);
+        return this.price;
+    }
+    moreTime() {
+        var price = this.priceInterval;
+        if (score >= price) {
+            score = score - price;
+            this.priceInterval = Math.round(price * 1.4);
+            this.time = this.time + 2000;
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("intervalPrice").innerHTML = price;
+            return this.time;
+        }
+    }
+    moreSpeed() {
+        var price = this.priceSpeed;
+        if (score >= price) {
+            score = score - price;
+            this.priceSpeed = Math.round(price * 1.4);
+            this.speed = this.speed + 5;
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("speedPrice").innerHTML = price;
+            return this.time;
+        }
+
+
+    }
+    getPrice() {
+        return this.price;
+    }
+    getSpeed() {
+        return this.speed;
+    }
+    getTime() {
+        return this.time;
+    }
+
+    updateScore() {
+
+    }
+    abilityCounter() {
+
+    }
+
+    autoclick() {
+        var interval = this.interval;
+        var button = document.getElementById("cookieImg");
+        var time = this.time;
+        if (score >= this.price) {
+
+            score = score - this.price;
+            this.setPrice();
+            document.getElementById("autoClickerPrice").innerHTML = this.price;
+            document.getElementById("score").innerHTML = score;
+            var startTime = new Date().getTime();
+
+            var myVar = setInterval(function() {
+                button.click()
+
+                if (new Date().getTime() - startTime > time) {
+                    clearInterval(myVar);
+                    return;
+                }
+            }, interval)
+            this.myVar;
+
+
+        }
+    }
+
+}
+
+var autoclicker = new autoclick(1000);
+var test = autoclicker.getPrice();
+alert(test);
