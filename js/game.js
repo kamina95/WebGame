@@ -1,3 +1,5 @@
+//Taking the object from the user logged
+
 var email = sessionStorage.getItem("loggedInUsrEmail");
 
 var score = 0;
@@ -27,7 +29,7 @@ var maxScore = 0;
 var maxScorePerSecond = 0;
 
 
-
+//class created for the upgrade of the auto clicker
 class autoclick {
 
     constructor(price) {
@@ -345,7 +347,6 @@ function upgradePower(price) {
 
 
 setInterval(function() {
-    //score = score + cursors;
     score = score + scorePerSecond;
     document.getElementById("score").innerHTML = score;
 }, 1000);
@@ -359,7 +360,7 @@ setInterval(function() {
 
 
 
-//var pageVisisted = new Date();
+
 
 setInterval(function() {
     timeOnSite = timeOnSite + 1000;
@@ -371,15 +372,3 @@ setInterval(function() {
 
     document.getElementById('counter').innerHTML = hours + ":" + minutes + ":" + seconds;
 }, 1000);
-
-function recoverClass(arr) {
-
-
-}
-
-
-
-// var test2 = [10, 10, 10, 1, 1, 1, 1]
-// autoclicker.setClass(test2);
-// var test = autoclicker.getClass();
-//alert(test);

@@ -10,24 +10,29 @@
 
 
 <!-- Contents of the page -->
+<!-- Cookie Game layout -->
 <div class="gamePage">
     <div class="gameLayaout">
         <fieldset>
             <div id = "gameLeft">
                 <center>
+                    <!-- General Stats -->
                 <div class = "scoreContainer unselectable">
                     <span id ="score">0 </span>  Cookies<br>
                     <span id ="scorePerSecond">0  </span>  Cookies Per Second<br>
                     <br>
                 </div>  
+                <!-- Cookie Img and objective of the clicks-->
                 <div class = "cookieContainer unselectable">
                     <img id ="cookieImg" src="img/cookieImg.png" alt="" onclick="addToScore(clickingPower)">
                 </div>
                 <br>
+                <!--Save gaem and restart button -->
                 <button onclick = "saveGame()">Save Game</button>
                 <button onclick = "restartGame(); restorePoints();">Restart</button>
                 </center>
             </div>
+            <!--All the button for upgrades and skills -->
             <div id ="gameRight">
                 <table class ="shopButton unselectable">
                     <tr>
@@ -45,7 +50,7 @@
                         </td>
                     </tr>
                 </table>
-
+                <!--each table with his javascript function -->
                 <table class ="shopButton unselectable" onclick ="buyCursor()">
                     <tr>
                         <td id = imgShop> <img src="img/cursor.png" alt=""></td>
@@ -86,7 +91,7 @@
                         <td id ="amount"><span id = "cities">0</span></td>
                     </tr>
                 </table>
-
+                <!-- ability and upgradse for it-->
                 <table>
                     <tr>
                         <td></td>
@@ -121,7 +126,7 @@
         </fieldset>
     </div>
 
-
+    <!--Stats -->
     <div class="gameStats">
     
     <fieldset>
