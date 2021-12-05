@@ -145,12 +145,20 @@
                     <td  id ="maxPerSecond">0</td>                   
                 </tr>
                 <tr>
-                    <th>Number of abilites used</th>
-                    <td>0</td>                    
-                </tr>
-                <tr>
                     <th>Power Of Click</th>
                     <td id ="powerClick">1</td>                    
+                </tr>
+                <tr>
+                    <th>Number of abilites used</th>
+                    <td id ="autoCounter">0</td>                    
+                </tr>
+                <tr>
+                    <th>Duration of the Ability</th>
+                    <td id ="timeAB">0</td>                    
+                </tr>
+                <tr>
+                    <th>Speed of the Ability</th>
+                    <td id ="speedAB">0</td>                    
                 </tr>
                 
             </table>

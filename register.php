@@ -105,11 +105,9 @@
             usrObject.cities = 0;
             usrObject.time = 0;
             usrObject.maxScore = 0;
+            usrObject.maxScorePerSecond = 0;
             usrObject.clickingPower = 1;
-            usrObject.autoInterval = 0;
-            usrObject.autoSpeed = 0;
-            usrObject.autoPrice = 1000;
-            usrObject.autoTimes = 0;
+            usrObject.initialClass =[1000, 10, 3000, 100, 1000, 1000, 0];
             
             //store User
             localStorage[usrObject.email] = JSON.stringify(usrObject);

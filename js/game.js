@@ -17,11 +17,135 @@ var fabrics = 0;
 var cityCost = 500;
 var cities = 0;
 
+var autoPrice = 1000;
+var arrClass = [];
+
 var timeOnSite = 0;
 
 var maxScore = 0;
 
+var maxScorePerSecond = 0;
 
+
+
+class autoclick {
+
+    constructor(price) {
+        this.price = price;
+        this.speed = 10;
+        this.time = 3000;
+        this.interval = 100;
+        this.priceSpeed = 1000;
+        this.priceInterval = 1000;
+        this.counter = 0;
+        var arrRecover = [price, 10, 3000, 100, 1000, 1000, 0];
+
+    }
+    setPrice() {
+        this.price = Math.round(this.price * 1.5);
+        return this.price;
+    }
+    moreTime() {
+        var price = this.priceInterval;
+        if (score >= price) {
+            score = score - price;
+            this.priceInterval = Math.round(price * 1.4);
+            this.time = this.time + 2000;
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("intervalPrice").innerHTML = this.priceInterval;
+            return this.time;
+        }
+    }
+    moreSpeed() {
+        var price = this.priceSpeed;
+        if (score >= price) {
+            score = score - price;
+            this.priceSpeed = Math.round(price * 1.4);
+            this.speed = this.speed + 5;
+            this.interval = Math.round(this.interval * 0.9);
+            document.getElementById("score").innerHTML = score;
+            document.getElementById("speedPrice").innerHTML = this.priceSpeed;
+            return this.time;
+        }
+    }
+    restoreStats() {
+        document.getElementById("autoClickerPrice").innerHTML = this.price;
+        document.getElementById("speedPrice").innerHTML = this.priceSpeed;
+        document.getElementById("intervalPrice").innerHTML = this.priceInterval;
+    }
+
+    getPrice() {
+        return this.price;
+    }
+    getSpeed() {
+        return this.speed;
+    }
+    getTime() {
+        return this.time / 1000;
+    }
+    getInterval() {
+        return Math.round(1000 / this.interval);
+    }
+    getPriceSpeed() {
+        return this.priceSpeed;
+    }
+    getPriceInterval() {
+        return this.priceInterval;
+    }
+    getCounter() {
+        return this.counter;
+    }
+
+
+    getClass() {
+        const arr = [this.price, this.speed, this.time, this.interval, this.priceSpeed, this.priceInterval, this.counter];
+        return arr;
+    }
+
+    setClass(arr) {
+        this.price = arr[0];
+        this.speed = arr[1];
+        this.time = arr[2];
+        this.interval = arr[3];
+        this.priceSpeed = arr[4];
+        this.priceInterval = arr[5];
+        this.counter = arr[6];
+        this.restoreStats();
+    }
+
+
+    abilityCounter() {
+        this.counter = this.counter + 1;
+    }
+
+    autoclick() {
+        var interval = this.interval;
+        var button = document.getElementById("cookieImg");
+        var time = this.time;
+        if (score >= this.price) {
+            this.abilityCounter();
+            score = score - this.price;
+            this.setPrice();
+            document.getElementById("autoClickerPrice").innerHTML = this.price;
+            document.getElementById("score").innerHTML = score;
+            var startTime = new Date().getTime();
+
+            var myVar = setInterval(function() {
+                button.click()
+
+                if (new Date().getTime() - startTime > time) {
+                    clearInterval(myVar);
+                    return;
+                }
+            }, interval)
+            this.myVar;
+
+        }
+    }
+
+}
+
+var autoclicker = new autoclick(autoPrice);
 
 document.getElementById("score").innerHTML = score;
 
@@ -48,9 +172,13 @@ function saveGame() {
     usrObj.fabrics = fabrics;
     usrObj.cities = cities;
     usrObj.clickingPower = clickingPower;
-
+    usrObj.initialClass = autoclicker.getClass();
+    usrObj.time = timeOnSite;
     if (score > maxScore) {
         usrObj.maxScore = score;
+    }
+    if (scorePerSecond > maxScorePerSecond) {
+        usrObj.maxScorePerSecond = scorePerSecond;
     }
     localStorage.setItem(email, JSON.stringify(usrObj));
     //localStorage[email] = JSON.stringify(usrObject);
@@ -66,6 +194,7 @@ function restartGame() {
     usrObj.fabrics = 0;
     usrObj.cities = 0;
     usrObj.clickingPower = 1;
+    usrObj.initialClass = [1000, 10, 3000, 100, 1000, 1000, 0];
     localStorage.setItem(email, JSON.stringify(usrObj));
     updateScosePerSecond();
     location.reload();
@@ -77,6 +206,7 @@ function restoreGame() {
 
     var email = sessionStorage.getItem("loggedInUsrEmail");
     let usrObj = JSON.parse(localStorage[email]);
+    arrClass = usrObj.initialClass;
 
     score = usrObj.cookies;
 
@@ -94,9 +224,16 @@ function restoreGame() {
     cities = usrObj.cities;
     cityCost = 500 + Math.round(cities * Math.pow(1.2, cities));
 
+    timeOnSite = usrObj.time;
+
     clickingPower = usrObj.clickingPower;
 
+    autoclicker.setClass(arrClass);
+
     maxScore = usrObj.maxScore;
+
+    scorePerSecond = scorePerSecond = cursors + (grandmas * 5) + (fabrics * 25) + (cities * 50);
+
 
 }
 
@@ -131,10 +268,15 @@ function addingStats() {
     let usrObj = JSON.parse(localStorage[email]);
     document.getElementById("usrName").innerHTML = usrObj.userName;
     document.getElementById("maxScore").innerHTML = usrObj.maxScore;
-    document.getElementById("maxPerSecond").innerHTML = scorePerSecond
+    document.getElementById("maxPerSecond").innerHTML = usrObj.maxScorePerSecond;
+    document.getElementById("autoCounter").innerHTML = autoclicker.getCounter();
     document.getElementById("powerClick").innerHTML = clickingPower;
+    document.getElementById("timeAB").innerHTML = autoclicker.getTime() + " S";
+    document.getElementById("speedAB").innerHTML = autoclicker.getInterval() + " CPS";
 
 }
+
+
 
 function buyCursor() {
 
@@ -217,10 +359,10 @@ setInterval(function() {
 
 
 
-var pageVisisted = new Date();
+//var pageVisisted = new Date();
 
 setInterval(function() {
-    var timeOnSite = new Date() - pageVisisted;
+    timeOnSite = timeOnSite + 1000;
 
     var secondsTotal = timeOnSite / 1000;
     var hours = Math.floor(secondsTotal / 3600);
@@ -230,90 +372,14 @@ setInterval(function() {
     document.getElementById('counter').innerHTML = hours + ":" + minutes + ":" + seconds;
 }, 1000);
 
-class autoclick {
+function recoverClass(arr) {
 
-    constructor(price) {
-        this.price = price;
-        this.speed = 10;
-        this.time = 3000;
-        this.interval = 100;
-        this.priceSpeed = 1000;
-        this.priceInterval = 1000;
-
-    }
-    setPrice() {
-        this.price = Math.round(this.price * 1.5);
-        return this.price;
-    }
-    moreTime() {
-        var price = this.priceInterval;
-        if (score >= price) {
-            score = score - price;
-            this.priceInterval = Math.round(price * 1.4);
-            this.time = this.time + 2000;
-            document.getElementById("score").innerHTML = score;
-            document.getElementById("intervalPrice").innerHTML = price;
-            return this.time;
-        }
-    }
-    moreSpeed() {
-        var price = this.priceSpeed;
-        if (score >= price) {
-            score = score - price;
-            this.priceSpeed = Math.round(price * 1.4);
-            this.speed = this.speed + 5;
-            document.getElementById("score").innerHTML = score;
-            document.getElementById("speedPrice").innerHTML = price;
-            return this.time;
-        }
-
-
-    }
-    getPrice() {
-        return this.price;
-    }
-    getSpeed() {
-        return this.speed;
-    }
-    getTime() {
-        return this.time;
-    }
-
-    updateScore() {
-
-    }
-    abilityCounter() {
-
-    }
-
-    autoclick() {
-        var interval = this.interval;
-        var button = document.getElementById("cookieImg");
-        var time = this.time;
-        if (score >= this.price) {
-
-            score = score - this.price;
-            this.setPrice();
-            document.getElementById("autoClickerPrice").innerHTML = this.price;
-            document.getElementById("score").innerHTML = score;
-            var startTime = new Date().getTime();
-
-            var myVar = setInterval(function() {
-                button.click()
-
-                if (new Date().getTime() - startTime > time) {
-                    clearInterval(myVar);
-                    return;
-                }
-            }, interval)
-            this.myVar;
-
-
-        }
-    }
 
 }
 
-var autoclicker = new autoclick(1000);
-var test = autoclicker.getPrice();
-alert(test);
+
+
+// var test2 = [10, 10, 10, 1, 1, 1, 1]
+// autoclicker.setClass(test2);
+// var test = autoclicker.getClass();
+//alert(test);

@@ -18,9 +18,9 @@ function createTable() {
         //console.log(usrObj.maxScore);
     }
 
-    for (var i = 0; i < arrKey.length; i++) {
-        console.log(arrKey[i]);
-    }
+    // for (var i = 0; i < arrKey.length; i++) {
+    //     console.log(arrKey[i]);
+    // }
 
     for (var i = arrKey.length - 2; i >= 0; i--) {
         for (var j = 0; j < i + 1; j++) {
@@ -70,9 +70,28 @@ function createTable() {
 function addingStats() {
     var email = sessionStorage.getItem("loggedInUsrEmail");
     var usrload = JSON.parse(localStorage[email]);
-    var scorePerSecond = usrload.cursors + usrload.grandmas * 5 + usrload.fabrics * 20;
+    var arr = usrload.initialClass;
+    var interval = Math.round(1000 / arr[3]);
+    var time = arr[2] / 1000;
     document.getElementById("usrName").innerHTML = usrload.userName;
     document.getElementById("maxScore").innerHTML = usrload.maxScore;
-    document.getElementById("maxPerSecond").innerHTML = scorePerSecond;
+    document.getElementById("maxPerSecond").innerHTML = usrload.maxScorePerSecond;
+    document.getElementById("maxPerSecond").innerHTML = usrload.maxScorePerSecond;
+    document.getElementById("duration").innerHTML = time + " Seconds";
+    document.getElementById("speed").innerHTML = interval + " Cookies PS";
+
+
+
+
+    var timeOn = usrload.time;
+    var secondsTotal = timeOn / 1000;
+    var hours = Math.floor(secondsTotal / 3600);
+    var minutes = Math.floor(secondsTotal / 60) % 3600;
+    var seconds = Math.floor(secondsTotal) % 60;
+
+    document.getElementById('timer').innerHTML = hours + ":" + minutes + ":" + seconds;
 
 }
+setInterval(function() {
+    addingStats();
+}, 1000);

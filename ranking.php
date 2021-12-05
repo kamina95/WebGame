@@ -70,7 +70,7 @@
                 </tr>
                 <tr>
                     <th>Time Played</th>
-                    <td>00:00:00</td>
+                    <td id ="timer">00:00:00</td>
                     
                 </tr>
                 <tr>
@@ -78,12 +78,12 @@
                     <td id ="maxPerSecond">0Cps</td>                   
                 </tr>
                 <tr>
-                    <th>Number of abilites used</th>
-                    <td>0</td>                    
+                    <th>Duration of the Ability</th>
+                    <td id = "duration">0</td>                    
                 </tr>
                 <tr>
-                    <th>Ability more used</th>
-                    <td>---</td>                    
+                    <th>Speed of the Ability</th>
+                    <td id= "speed">---</td>                    
                 </tr>
                 
             </table>
