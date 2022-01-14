@@ -114,7 +114,7 @@
 
             //inform user of result
             document.getElementById("Result").innerHTML = "<b>Registration succesful </b>";
-
+            //giving error messages
         }else{
         if(!CheckEmailExisting()){
             msgEmailExisting = "This Email already exist."
@@ -149,8 +149,8 @@
 
     }
 
-    //document.getElementById("rules").innerHTML = "-Rules for the registration:  </br></br>" + msgEmailExisting + "</br></br>" + msgEmail + "</br></br>" + msgPassword + "</br></br>" + msgPasswordSimi + "</br></br>" + msgNumber + "</br></br>" ;
-
+   
+    //functions that check 
 
     function CheckEmailExisting()
     {
@@ -164,6 +164,7 @@
 
     function CheckEmail() 
     { 
+        //regular expresion for email
         var emailRegex = new RegExp(/^[A-Za-z0-9_.-]+@[A-Za-z0-9.-]+$/);
         var email = document.getElementById("EmailInput").value;
         if(!emailRegex.test(email)) 
@@ -172,7 +173,7 @@
         }
         return true;
     }
-
+        //regulat expresion for password
     function CheckPassword() 
     { 
         var passwordRegex = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
@@ -183,7 +184,7 @@
         }
         return true;
     }
-
+        //checking similitud 
     function CheckSimilitud() 
     {
         var password = document.getElementById("PasswordInput").value;
@@ -193,9 +194,9 @@
             return true;
         }
         return false;
-
     }
 
+    //regular expresion for telephone number
     function CheckNumber()
     {
         var number = document.getElementById("TelephoneItem").value;

@@ -19,37 +19,7 @@
         <fieldset>
             <legend>Global Ranking</legend>
             <table id ="tableRan">
-                <!-- <tr>
-                    <th>Position</th>
-                    <th>User Name</th>                    
-                    <th>Puntuation</th>
-                </tr>
-                <tr >
-                    <td id ="1st">1</td>
-                    <td>Peter</td>
-                    <td>90444</td>
-                    
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Lois</td>
-                    <td>70000</td>                   
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Joe</td>
-                    <td>56788</td>                    
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Cleveland</td>
-                    <td>40989</td>                    
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Brian</td>
-                    <td>34555</td>                    
-                </tr> -->
+
             </table>
         </fieldset>
     </div>

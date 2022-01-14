@@ -1,7 +1,7 @@
 //Taking the object from the user logged
 
 var email = sessionStorage.getItem("loggedInUsrEmail");
-
+//initialating all the variables
 var score = 0;
 var scorePerSecond = 0;
 
@@ -31,18 +31,19 @@ var maxScorePerSecond = 0;
 
 //class created for the upgrade of the auto clicker
 class autoclick {
-
+    //the constructor for the class
     constructor(price) {
-        this.price = price;
-        this.speed = 10;
-        this.time = 3000;
-        this.interval = 100;
-        this.priceSpeed = 1000;
-        this.priceInterval = 1000;
-        this.counter = 0;
-        var arrRecover = [price, 10, 3000, 100, 1000, 1000, 0];
+            this.price = price;
+            this.speed = 10;
+            this.time = 3000;
+            this.interval = 100;
+            this.priceSpeed = 1000;
+            this.priceInterval = 1000;
+            this.counter = 0;
+            var arrRecover = [price, 10, 3000, 100, 1000, 1000, 0];
 
-    }
+        }
+        //function for incremetn when buying
     setPrice() {
         this.price = Math.round(this.price * 1.5);
         return this.price;
@@ -59,22 +60,24 @@ class autoclick {
         }
     }
     moreSpeed() {
-        var price = this.priceSpeed;
-        if (score >= price) {
-            score = score - price;
-            this.priceSpeed = Math.round(price * 1.4);
-            this.speed = this.speed + 5;
-            this.interval = Math.round(this.interval * 0.9);
-            document.getElementById("score").innerHTML = score;
-            document.getElementById("speedPrice").innerHTML = this.priceSpeed;
-            return this.time;
+            var price = this.priceSpeed;
+            if (score >= price) {
+                score = score - price;
+                this.priceSpeed = Math.round(price * 1.4);
+                this.speed = this.speed + 5;
+                this.interval = Math.round(this.interval * 0.9);
+                document.getElementById("score").innerHTML = score;
+                document.getElementById("speedPrice").innerHTML = this.priceSpeed;
+                return this.time;
+            }
         }
-    }
+        //function called when reset the game
     restoreStats() {
-        document.getElementById("autoClickerPrice").innerHTML = this.price;
-        document.getElementById("speedPrice").innerHTML = this.priceSpeed;
-        document.getElementById("intervalPrice").innerHTML = this.priceInterval;
-    }
+            document.getElementById("autoClickerPrice").innerHTML = this.price;
+            document.getElementById("speedPrice").innerHTML = this.priceSpeed;
+            document.getElementById("intervalPrice").innerHTML = this.priceInterval;
+        }
+        //getters functions
 
     getPrice() {
         return this.price;
@@ -98,12 +101,12 @@ class autoclick {
         return this.counter;
     }
 
-
+    //getter function with a class
     getClass() {
-        const arr = [this.price, this.speed, this.time, this.interval, this.priceSpeed, this.priceInterval, this.counter];
-        return arr;
-    }
-
+            const arr = [this.price, this.speed, this.time, this.interval, this.priceSpeed, this.priceInterval, this.counter];
+            return arr;
+        }
+        //setter function wiht array
     setClass(arr) {
         this.price = arr[0];
         this.speed = arr[1];
@@ -117,9 +120,9 @@ class autoclick {
 
 
     abilityCounter() {
-        this.counter = this.counter + 1;
-    }
-
+            this.counter = this.counter + 1;
+        }
+        //the power of the ability, what actually does
     autoclick() {
         var interval = this.interval;
         var button = document.getElementById("cookieImg");
@@ -146,26 +149,29 @@ class autoclick {
     }
 
 }
-
+//creating the object of the class
 var autoclicker = new autoclick(autoPrice);
 
 document.getElementById("score").innerHTML = score;
-
+//every time tha tthe page is refressed or changed
 window.onpaint
 window.onload = restoreGame();
 restorePoints();
 addingStats();
 
+//function that display the score
 function addToScore(amount) {
     score = score + amount;
     document.getElementById("score").innerHTML = score;
 }
 
+//function that display the CPS and set the value of it
 function updateScosePerSecond() {
     scorePerSecond = cursors + (grandmas * 5) + (fabrics * 25) + (cities * 50);
     document.getElementById("scorePerSecond").innerHTML = scorePerSecond;
 }
 
+//it upload the data to the localStorage for save it
 function saveGame() {
     let usrObj = JSON.parse(localStorage[email]); //Convert to object
     usrObj.cookies = score;
@@ -179,14 +185,14 @@ function saveGame() {
     if (score > maxScore) {
         usrObj.maxScore = score;
     }
-    if (scorePerSecond > maxScorePerSecond) {
+    if (scorePerSecond > usrObj.maxScorePerSecond) {
         usrObj.maxScorePerSecond = scorePerSecond;
     }
     localStorage.setItem(email, JSON.stringify(usrObj));
-    //localStorage[email] = JSON.stringify(usrObject);
 
 }
 
+//restart the game to the  first point but keep the stats
 function restartGame() {
 
     let usrObj = JSON.parse(localStorage[email]); //Convert to object
@@ -200,10 +206,8 @@ function restartGame() {
     localStorage.setItem(email, JSON.stringify(usrObj));
     updateScosePerSecond();
     location.reload();
-
-
 }
-
+//restore the information from the local storage
 function restoreGame() {
 
     var email = sessionStorage.getItem("loggedInUsrEmail");
@@ -215,16 +219,16 @@ function restoreGame() {
     time = timeOnSite;
 
     cursors = usrObj.cursors;
-    cursorCost = 10 + Math.round(cursors * Math.pow(1.2, cursors));
+    cursorCost = Math.round(10 + cursors * Math.pow(1.2, cursors));
 
     grandmas = usrObj.grandmas;
-    grandmaCost = 50 + Math.round(grandmas * Math.pow(1.2, grandmas));
+    grandmaCost = Math.round(50 + grandmas * Math.pow(1.2, grandmas));
 
     fabrics = usrObj.fabrics;
-    fabricCost = 300 + Math.round(fabrics * Math.pow(1.2, fabrics));
+    fabricCost = Math.round(300 + fabrics * Math.pow(1.2, fabrics));
 
     cities = usrObj.cities;
-    cityCost = 500 + Math.round(cities * Math.pow(1.2, cities));
+    cityCost = Math.round(500 + cities * Math.pow(1.2, cities));
 
     timeOnSite = usrObj.time;
 
@@ -236,9 +240,9 @@ function restoreGame() {
 
     scorePerSecond = scorePerSecond = cursors + (grandmas * 5) + (fabrics * 25) + (cities * 50);
 
-
 }
 
+//restore all the stats of the ingame menu from localStorage
 function restorePoints() {
     var email = sessionStorage.getItem("loggedInUsrEmail");
     let usrObj = JSON.parse(localStorage[email]);
@@ -264,7 +268,7 @@ function restorePoints() {
     updateScosePerSecond();
 
 }
-
+//upload the stats from the local storage
 function addingStats() {
     var email = sessionStorage.getItem("loggedInUsrEmail");
     let usrObj = JSON.parse(localStorage[email]);
@@ -279,7 +283,9 @@ function addingStats() {
 }
 
 
-
+//funtions for the in-game menu 
+//they upload the content and increase the stats in menu and in game
+//There are four different buildinggs
 function buyCursor() {
 
     if (score >= cursorCost) {
@@ -331,7 +337,7 @@ function buyCity() {
     updateScosePerSecond();
 }
 
-
+//Increase te click power in the cookie
 function upgradePower(price) {
     if (score >= price) {
         score = score - price;
@@ -345,7 +351,7 @@ function upgradePower(price) {
 
 
 
-
+//Intercals  for uploading data, saving and 
 setInterval(function() {
     score = score + scorePerSecond;
     document.getElementById("score").innerHTML = score;
@@ -360,7 +366,7 @@ setInterval(function() {
 
 
 
-
+//intercal for count the time
 
 setInterval(function() {
     timeOnSite = timeOnSite + 1000;
@@ -369,6 +375,10 @@ setInterval(function() {
     var hours = Math.floor(secondsTotal / 3600);
     var minutes = Math.floor(secondsTotal / 60) % 3600;
     var seconds = Math.floor(secondsTotal) % 60;
+    if (minutes > 60) {
+        hours += Math.floor(minutes / 60);
+        minutes = minutes % 60;
+    }
 
     document.getElementById('counter').innerHTML = hours + ":" + minutes + ":" + seconds;
 }, 1000);

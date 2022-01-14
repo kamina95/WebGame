@@ -48,7 +48,7 @@ function tutorial($columnNumber, $position){
     echo '<div class = '.$columnNumber .'>';
     echo    '<fieldset>
      <legend>Tutorial</legend>
-    <p id = "rules" >orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing so</p>
+    <p id = "rules" >The Game is Simple, Just click the cookie.... BUUT also you can buy grandmas or cursors or fabrics ooor cities, and they will do the baking for you, or improve your clicking power do ing your clicks even more poweerfull, or use your autoClick ability, which one you can actually improve, Just With One Click, EVERYTHING FOR THE COOKIES</p>
      </fieldset>
      </div>';
      //if to check see if is the first or last column
